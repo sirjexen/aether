@@ -1,0 +1,20 @@
+/* Particle Universe — small-screen layout fixes.
+   The hint and the Converge button share the band above the nav;
+   on narrow screens the button moves up a row so they never overlap. */
+
+@media (max-width: 720px) {
+  .particle-universe .scene-hint {
+    left: 20px !important;
+    bottom: 108px !important;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    max-width: 62vw;
+  }
+
+  .particle-universe .universe-converge {
+    right: 20px !important;
+    bottom: 172px !important;
+    padding: 10px 18px 10px 22px !important;
+    font-size: 10px !important;
+  }
+}

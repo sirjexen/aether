@@ -1,0 +1,116 @@
+/* KineticType — Scene 03 "Kinetic Typography Lab". Scoped to .kinetic-type. */
+
+.kinetic-type {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.kinetic-type__stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kinetic-type__glyph {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(120px, 24vw, 300px);
+  line-height: 1;
+  color: var(--ink);
+  display: inline-block;
+  margin: 0 0.015em;
+  will-change: transform;
+}
+
+/* Mode indicator — top-right, crossfades on change (keyed re-mount). */
+.kinetic-type__mode {
+  position: absolute;
+  top: 96px;
+  right: 32px;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  pointer-events: none;
+  animation: kinetic-mode-in 0.5s var(--ease-out) both;
+}
+
+.kinetic-type__mode-num {
+  color: var(--amber);
+}
+
+.kinetic-type__mode-sep {
+  color: var(--ink-25);
+  margin: 0 0.6em;
+}
+
+@keyframes kinetic-mode-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Keyboard-accessible "Next mode" control — bottom-right above nav. */
+.kinetic-type__next {
+  position: absolute;
+  right: 32px;
+  bottom: 104px;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  padding: 10px 2px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.kinetic-type__next:hover {
+  color: var(--amber);
+  border-color: var(--amber);
+}
+
+/* Reduced motion: static glyphs, instant mode swaps, no transitions. */
+.kinetic-type.reduced {
+  cursor: default;
+}
+
+.kinetic-type.reduced .kinetic-type__mode {
+  animation: none;
+}
+
+.kinetic-type.reduced .kinetic-type__next {
+  transition: none;
+}
+
+@media (max-width: 640px) {
+  .kinetic-type__mode {
+    top: 84px;
+    right: 20px;
+  }
+
+  /* Stack the Next-mode control above the hint so they never overlap. */
+  .kinetic-type__next {
+    right: 20px;
+    bottom: 158px;
+  }
+
+  .kinetic-type .scene-hint {
+    left: 20px !important;
+    bottom: 104px !important;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    max-width: 64vw;
+  }
+}

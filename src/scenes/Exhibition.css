@@ -1,0 +1,269 @@
+/* Exhibition — Scene 04. All selectors prefixed .exhibition. */
+
+.exhibition {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--bg);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.exhibition-parallax {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.exhibition-stage {
+  position: absolute;
+  inset: 0;
+  animation: exhibition-stage-in 0.7s var(--ease-out) both;
+}
+
+@keyframes exhibition-stage-in {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---------- caption ---------- */
+
+.exhibition-caption {
+  position: absolute;
+  left: 56px;
+  top: 44%;
+  transform: translateY(-50%);
+  max-width: 340px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.exhibition-caption-inner {
+  animation: exhibition-caption-in 0.7s var(--ease-out) both;
+}
+
+@keyframes exhibition-caption-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.exhibition-kicker {
+  margin: 0 0 10px;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--amber);
+  opacity: 0.85;
+}
+
+.exhibition-caption-title {
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.exhibition-medium {
+  margin: 14px 0 0;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+
+.exhibition-statement {
+  margin: 16px 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--ink-70);
+  max-width: 30ch;
+}
+
+/* ---------- closing text ---------- */
+
+.exhibition-fin-text {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 0 24px;
+  text-align: center;
+  pointer-events: none;
+  animation: exhibition-caption-in 0.9s var(--ease-out) both;
+}
+
+.exhibition-fin-line {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.7rem, 4vw, 3.2rem);
+  line-height: 1.15;
+  color: var(--ink);
+  text-wrap: balance;
+  max-width: 22ch;
+}
+
+.exhibition-fin-sub {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+}
+
+/* ---------- gallery rail nav ---------- */
+
+.exhibition-rail {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.exhibition-arrow {
+  background: none;
+  border: none;
+  padding: 10px 6px;
+  font-family: var(--font-ui);
+  font-size: 18px;
+  line-height: 1;
+  color: var(--ink-40);
+  cursor: pointer;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.exhibition-arrow:hover {
+  color: var(--ink);
+  transform: translateX(2px);
+}
+
+.exhibition-rail-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  background: none;
+  border: none;
+  padding: 8px 2px;
+  cursor: pointer;
+  color: var(--ink-40);
+  transition: color 0.25s ease;
+  text-align: right;
+}
+
+.exhibition-rail-item:hover {
+  color: var(--ink);
+}
+
+.exhibition-rail-item.is-active {
+  color: var(--ink);
+}
+
+.exhibition-numeral {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.35rem;
+  letter-spacing: 0.06em;
+  min-width: 2.2em;
+}
+
+.exhibition-rail-item.is-active .exhibition-numeral {
+  color: var(--amber);
+}
+
+.exhibition-rail-title {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 720px) {
+  .exhibition-caption {
+    left: 20px;
+    right: 20px;
+    top: auto;
+    bottom: 172px;
+    transform: none;
+    max-width: none;
+  }
+
+  .exhibition-caption-title {
+    font-size: 2rem;
+  }
+
+  .exhibition-statement {
+    font-size: 0.92rem;
+    max-width: none;
+    margin-top: 10px;
+  }
+
+  .exhibition-medium {
+    margin-top: 8px;
+  }
+
+  .exhibition-rail {
+    right: 12px;
+    left: 12px;
+    top: 78px;
+    transform: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2px;
+  }
+
+  .exhibition-rail-title {
+    display: none;
+  }
+
+  .exhibition-numeral {
+    font-size: 1.05rem;
+    min-width: 0;
+  }
+
+  .exhibition-rail-item {
+    padding: 8px 10px;
+  }
+
+  .exhibition-arrow {
+    padding: 8px 10px;
+  }
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .exhibition-stage,
+  .exhibition-caption-inner,
+  .exhibition-fin-text {
+    animation: none;
+  }
+}
